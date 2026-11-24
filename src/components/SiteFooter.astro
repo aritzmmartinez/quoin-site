@@ -1,0 +1,102 @@
+---
+import Logo from "./Logo.astro";
+import LanguageMenu from "~/islands/LanguageMenu";
+import { locales, useTranslations, type Locale } from "~/i18n";
+import { links } from "~/lib/links";
+
+interface Props {
+  lang: Locale;
+  path: string;
+  variant?: "landing" | "page";
+}
+
+const { lang, path, variant = "landing" } = Astro.props;
+const t = useTranslations(lang);
+const languageOptions = locales.map((code) => ({
+  code,
+  name: useTranslations(code).langName,
+  href: `/${code}${path}`,
+}));
+const footerLinks =
+  variant === "landing"
+    ? ([
+        [links.repo, t.footer.repo],
+        [links.changelog, t.footer.changelog],
+        [`/${lang}/privacy`, t.footer.privacy],
+        [links.contact, t.footer.contact],
+      ] as const)
+    : ([
+        [`/${lang}`, t.footer.home],
+        [links.repo, t.footer.repo],
+        [links.contact, t.footer.contact],
+      ] as const);
+const linkList = "m-0 flex list-none flex-wrap gap-x-7 gap-y-2.5 p-0 text-sm";
+const linkClass = "text-muted no-underline transition-colors hover:text-text";
+---
+
+{variant === "page" && (
+  <footer class="mt-24 border-t border-border">
+    <div class="mx-auto flex max-w-300 flex-wrap items-center justify-between gap-x-7 gap-y-4 px-6 py-8 text-sm">
+      <span class="text-muted">{t.footer.short}</span>
+      <div class="flex flex-wrap items-center gap-x-7 gap-y-4">
+        <nav aria-label={t.a11y.footerNav}>
+          <ul class={linkList}>
+            {footerLinks.map(([href, label]) => (
+              <li>
+                <a class={linkClass} href={href}>
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <LanguageMenu
+          client:idle
+          label={t.language.label}
+          current={lang}
+          options={languageOptions}
+        />
+      </div>
+    </div>
+  </footer>
+)}
+
+{variant === "landing" && (
+  <footer class="mt-32 border-t border-border sm:mt-40">
+    <div class="mx-auto flex max-w-300 flex-col gap-8 px-6 pt-10 pb-8">
+      <div class="flex flex-wrap justify-between gap-8">
+        <div class="flex flex-[1_1_320px] flex-col gap-3.5">
+          <span class="flex items-center gap-2.5 text-[15px] font-semibold">
+            <Logo size={22} />
+            Quoin
+          </span>
+          <p class="m-0 max-w-85 text-sm leading-relaxed text-muted">
+            {t.footer.madeBy}
+          </p>
+          <LanguageMenu
+            client:idle
+            label={t.language.label}
+            current={lang}
+            options={languageOptions}
+          />
+        </div>
+        <nav aria-label={t.a11y.footerNav}>
+          <ul class={linkList}>
+            {footerLinks.map(([href, label]) => (
+              <li>
+                <a class={linkClass} href={href}>
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+      <div class="flex flex-col gap-1.5 text-xs leading-relaxed text-muted">
+        <p class="m-0">{t.footer.notAdvice}</p>
+        <p class="m-0">{t.footer.notAffiliated}</p>
+        <p class="m-0">{t.footer.trademarks}</p>
+      </div>
+    </div>
+  </footer>
+)}

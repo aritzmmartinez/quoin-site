@@ -1,0 +1,53 @@
+---
+import PillButton from "../PillButton.astro";
+import PhoneMockup from "../PhoneMockup.astro";
+import Rich from "../Rich.astro";
+import { useTranslations, type Locale } from "~/i18n";
+import { BETA_GROUP, links } from "~/lib/links";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section
+  aria-labelledby="hero-title"
+  class="mx-auto flex max-w-300 flex-wrap items-end gap-x-18 gap-y-12 px-6 pt-12 sm:pt-18"
+>
+  <div class="flex min-w-0 flex-[7_1_520px] flex-col gap-7 pb-12 sm:pb-24">
+    <h1
+      id="hero-title"
+      class="m-0 max-w-[11ch] text-[clamp(44px,6.6vw,88px)] leading-[0.98] font-semibold tracking-[-0.045em]"
+    >
+      {t.hero.titleA} <span class="text-muted">{t.hero.titleB}</span>
+    </h1>
+    <p class="m-0 max-w-130 text-[19px] leading-[1.55] text-body">
+      {t.hero.lead}
+    </p>
+    <div class="flex flex-wrap items-center gap-x-6 gap-y-3.5">
+      <PillButton href="#download" size="lg">
+        {t.hero.primary}
+      </PillButton>
+      <p class="m-0 text-[15px] text-muted">
+        {BETA_GROUP ? (
+          <Rich parts={t.hero.androidOpen} href={BETA_GROUP} />
+        ) : (
+          t.hero.android
+        )}
+      </p>
+    </div>
+  </div>
+  <div class="flex min-w-0 flex-[5_1_340px] justify-center">
+    <PhoneMockup lang={lang} />
+  </div>
+</section>
+
+<div class="border-t border-border">
+  <p class="mx-auto my-0 max-w-300 px-6 py-4.5 text-sm leading-relaxed text-muted">
+    <Rich parts={t.hero.strip} />{" "}
+    <Rich parts={t.hero.missing} href={links.newIssue} />
+  </p>
+</div>

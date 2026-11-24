@@ -1,0 +1,33 @@
+---
+import PillButton from "../PillButton.astro";
+import { useTranslations, type Locale } from "~/i18n";
+
+interface Props {
+  lang: Locale;
+  href: string;
+}
+
+const { lang, href } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section
+  id="beta"
+  aria-labelledby="beta-title"
+  class="mx-auto max-w-300 px-6 pt-32 sm:pt-50"
+>
+  <h2
+    id="beta-title"
+    class="m-0 max-w-[14ch] text-[clamp(44px,6.6vw,88px)] leading-[0.98] font-semibold tracking-[-0.045em]"
+  >
+    {t.beta.title}
+  </h2>
+  <div class="mt-9 flex flex-wrap items-center gap-x-8 gap-y-5">
+    <PillButton href={href} size="lg">
+      {t.beta.join}
+    </PillButton>
+    <p class="m-0 max-w-115 text-sm leading-relaxed text-muted">
+      {t.beta.body}
+    </p>
+  </div>
+</section>

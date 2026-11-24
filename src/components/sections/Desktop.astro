@@ -1,0 +1,25 @@
+---
+import Section from "../Section.astro";
+import Badge from "../Badge.astro";
+import ReturnChart from "~/islands/ReturnChart";
+import { useTranslations, type Locale } from "~/i18n";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<Section id="desktop" title={t.desktop.title}>
+  <Fragment slot="intro">
+    <Badge>{t.desktopOnly}</Badge>
+    <p class="m-0 text-[17px] leading-relaxed text-body">{t.desktop.body}</p>
+  </Fragment>
+  <ReturnChart
+    client:visible
+    locale={t.numberLocale}
+    labels={t.desktop.chart}
+  />
+</Section>

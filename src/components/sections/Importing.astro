@@ -1,0 +1,29 @@
+---
+import Rich from "../Rich.astro";
+import { useTranslations, type Locale } from "~/i18n";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section
+  id="import"
+  aria-labelledby="import-title"
+  class="mx-auto max-w-300 px-6 pt-28 sm:pt-40"
+>
+  <h2 id="import-title" class="m-0 mb-10 text-[17px] font-medium text-muted">
+    {t.importing.title}
+  </h2>
+  <p class="m-0 max-w-270 text-[clamp(30px,4.4vw,58px)] leading-[1.16] font-medium tracking-[-0.035em]">
+    <Rich parts={t.importing.result} />
+  </p>
+  <div class="mt-14 flex flex-wrap gap-x-16 gap-y-6 text-base leading-relaxed text-body">
+    {t.importing.body.map((p) => (
+      <p class="m-0 max-w-115 flex-[1_1_320px]">{p}</p>
+    ))}
+  </div>
+</section>

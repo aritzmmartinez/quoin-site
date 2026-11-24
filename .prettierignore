@@ -1,0 +1,4 @@
+dist
+.astro
+docs/design
+pnpm-lock.yaml

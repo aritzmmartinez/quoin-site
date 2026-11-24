@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Quoin · Landing</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0a0a0b}
+*{box-sizing:border-box}
+.q-root{color-scheme:dark;--q-bg:#0a0a0b;--q-surface:#151518;--q-surface-2:#1a1a1e;--q-border:#26262a;--q-border-subtle:#1f1f24;--q-border-strong:#34343a;--q-text:#ffffff;--q-body:#c9c9cf;--q-muted:#8b8b93;--q-faint:#4e4e54;--q-accent:#f2f2f4;--q-on-accent:#0a0a0b;--q-positive:#00d68f;--q-negative:#ff4757;--q-nav-bg:rgba(21,21,24,0.8);--q-nav-border:rgba(255,255,255,0.08);--q-shadow:rgba(0,0,0,0.45)}
+.q-root.q-light{color-scheme:light;--q-bg:#f5f5f7;--q-surface:#ffffff;--q-surface-2:#f2f2f5;--q-border:#e3e3e8;--q-border-subtle:#ececf0;--q-border-strong:#d0d0d6;--q-text:#0a0a0b;--q-body:#3c3c43;--q-muted:#6b6b74;--q-faint:#a3a3ab;--q-accent:#0a0a0b;--q-on-accent:#ffffff;--q-positive:#009a6b;--q-negative:#d93644;--q-nav-bg:rgba(255,255,255,0.82);--q-nav-border:rgba(10,10,11,0.08);--q-shadow:rgba(10,10,11,0.14)}
+.q-band .q-row{border-bottom-color:var(--q-border)}
+.q-root a{color:var(--q-text)}
+.q-root :focus-visible{outline:2px solid var(--q-accent);outline-offset:3px;border-radius:6px}
+.q-mono{font-family:'Geist Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.q-menu{position:absolute;bottom:calc(100% + 8px);left:0;min-width:200px;margin:0;padding:6px;list-style:none;background:var(--q-surface);border:1px solid var(--q-border);border-radius:16px;box-shadow:0 12px 32px var(--q-shadow);display:flex;flex-direction:column;gap:2px}
+.q-option{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:40px;padding:0 12px;border:0;border-radius:999px;background:transparent;color:var(--q-body);font-family:inherit;font-size:14px;cursor:pointer;text-align:left}
+.q-option:hover{background:var(--q-surface-2);color:var(--q-text)}
+.q-nav{max-width:1200px;border:1px solid transparent;border-radius:999px;transition:max-width .3s cubic-bezier(.2,.7,.2,1),background-color .2s ease,border-color .2s ease}
+.q-nav.q-float{max-width:1040px;background:var(--q-nav-bg);border-color:var(--q-nav-border);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.q-root .q-navlink{text-decoration:none;color:var(--q-muted);padding:8px 12px;border-radius:999px;transition:color .15s ease}
+.q-root .q-navlink:hover{color:var(--q-text)}
+.q-root .q-link{color:var(--q-text);text-decoration:underline;text-decoration-color:var(--q-border-strong);text-underline-offset:4px;transition:text-decoration-color .15s ease}
+.q-root .q-link:hover{text-decoration-color:var(--q-text)}
+.q-root .q-foot{text-decoration:none;color:var(--q-muted)}
+.q-root .q-foot:hover{color:var(--q-text)}
+.q-btn{transition:opacity .15s ease}
+.q-btn:hover{opacity:.86}
+@keyframes q-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.q-motion .q-draw{stroke-dasharray:1;animation:q-draw .9s cubic-bezier(.4,0,.2,1) both}
+details summary{list-style:none;cursor:pointer}
+details summary::-webkit-details-marker{display:none}
+.q-chev{transition:transform .2s ease}
+details[open] .q-chev{transform:rotate(45deg)}
+.q-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--q-border-subtle);font-size:15px}
+@media (max-width:820px){.q-navlinks{display:none !important}}
+@media (max-width:460px){.q-navcta{display:none !important}}
+@media (prefers-reduced-motion:reduce){.q-motion *{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div class="{{rootClass}}" style="width: 100%; min-height: 100vh; background: var(--q-bg); color: var(--q-text); font-family: 'Geist', ui-sans-serif, system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden">
+
+<header style="position: sticky; top: 0; z-index: 30; padding: 12px 16px 0">
+<nav class="{{navClass}}" aria-label="Principal" style="margin: 0 auto; height: 56px; padding: 0 8px 0 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#inicio" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--q-text)">
+<svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true" style="display: block"><rect width="32" height="32" rx="9" style="fill: var(--q-accent)"></rect><rect x="9.25" y="9.25" width="13.5" height="13.5" rx="2.75" fill="none" stroke-width="2.5" style="stroke: var(--q-on-accent)"></rect><rect x="17" y="17" width="10" height="10" style="fill: var(--q-accent)"></rect></svg>
+<span style="font-size: 16px; font-weight: 600">Quoin</span>
+</a>
+<div class="q-navlinks" style="display: flex; gap: 2px; font-size: 14px">
+<a class="q-navlink" href="#importar">Cómo funciona</a>
+<a class="q-navlink" href="#privacidad">Privacidad</a>
+<a class="q-navlink" href="#descarga">Descarga</a>
+<a class="q-navlink" href="#preguntas">Preguntas</a>
+</div>
+<div style="display: flex; align-items: center; gap: 4px">
+<button type="button" onClick="{{toggleTheme}}" aria-label="{{themeLabel}}" title="{{themeLabel}}" style="display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; padding: 0; border: 0; border-radius: 999px; background: transparent; color: var(--q-muted); cursor: pointer">
+<sc-if value="{{isLight}}" hint-placeholder-val="{{ false }}"><svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg></sc-if>
+<sc-if value="{{isDark}}" hint-placeholder-val="{{ true }}"><svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"></circle><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg></sc-if>
+</button>
+<a href="https://github.com/aritzmmartinez/quoin" aria-label="Quoin en GitHub" style="display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; color: var(--q-muted)">
+<svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg>
+</a>
+<a class="q-btn q-navcta" href="#beta" style="display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 999px; background: var(--q-accent); color: var(--q-on-accent); font-size: 14px; font-weight: 600; text-decoration: none">Únete a la beta</a>
+</div>
+</nav>
+</header>
+
+<main id="inicio">
+
+<section aria-labelledby="hero-title" style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 0; display: flex; flex-wrap: wrap; align-items: flex-end; gap: 48px 72px">
+<div style="flex: 7 1 520px; min-width: 0; padding-bottom: 96px; display: flex; flex-direction: column; gap: 28px">
+<h1 id="hero-title" style="margin: 0; max-width: 11ch; font-size: clamp(44px, 6.6vw, 88px); line-height: .98; font-weight: 600; letter-spacing: -0.045em">Tu cartera no vive en el servidor de nadie.</h1>
+<p style="margin: 0; max-width: 520px; font-size: 19px; line-height: 1.55; color: var(--q-body)">Quoin importa los movimientos de tu broker y calcula en tu móvil lo que tienes, lo que has ganado y lo que pagarás a Hacienda. Sin cuenta. Sin subir nada a ningún sitio.</p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px">
+<a class="q-btn" href="#beta" style="display: inline-flex; align-items: center; min-height: 50px; padding: 0 24px; border-radius: 999px; background: var(--q-accent); color: var(--q-on-accent); font-size: 15px; font-weight: 600; text-decoration: none">Únete a la beta de Android</a>
+<a class="q-link" href="#descarga" style="font-size: 15px">o úsalo hoy en tu ordenador</a>
+</div>
+</div>
+<div style="flex: 5 1 340px; min-width: 0; display: flex; justify-content: center">
+<div style="width: 336px; height: 600px; overflow: hidden">
+<div style="width: 390px; height: 844px; transform: scale(0.8615); transform-origin: top left; filter: drop-shadow(0 30px 60px var(--q-shadow))">
+<dc-import name="PhoneHome" animate="{{animate}}" hint-size="390px,844px"></dc-import>
+</div>
+</div>
+</div>
+</section>
+
+<div style="border-top: 1px solid var(--q-border)">
+<p style="max-width: 1200px; margin: 0 auto; padding: 18px 24px; font-size: 14px; line-height: 1.6; color: var(--q-muted)">Lee los ficheros de <span style="color: var(--q-text)">Trade Republic</span> y <span style="color: var(--q-text)">Kraken</span>. Calcula el IRPF del <span style="color: var(--q-text)">régimen común</span>, <span style="color: var(--q-text)">Canarias</span> y <span style="color: var(--q-text)">Bizkaia</span>. Código abierto, AGPL‑3.0. Las cifras de esta página son de una cartera inventada.</p>
+</div>
+
+<section id="importar" aria-labelledby="import-title" style="max-width: 1200px; margin: 0 auto; padding: 160px 24px 0">
+<h2 id="import-title" style="margin: 0 0 40px; font-size: 17px; font-weight: 500; color: var(--q-muted)">Así se ve importar un fichero de Trade Republic:</h2>
+<p style="margin: 0; max-width: 1080px; font-size: clamp(30px, 4.4vw, 58px); line-height: 1.16; font-weight: 500; letter-spacing: -0.035em">
+<span class="q-mono" style="font-weight: 400">248</span> operaciones nuevas, <span class="q-mono" style="font-weight: 400">0</span> repetidas de la vez anterior y <span class="q-mono" style="font-weight: 400">9</span> en dólares, <span style="color: var(--q-muted)">convertidas a euros con el tipo del BCE de su día, no con el de hoy.</span>
+</p>
+<div style="margin-top: 56px; display: flex; flex-wrap: wrap; gap: 24px 64px; font-size: 16px; line-height: 1.6; color: var(--q-body)">
+<p style="margin: 0; flex: 1 1 320px; max-width: 460px">Descargas el CSV desde la app de tu broker y lo abres en Quoin. Nunca te pide la contraseña del broker, y la app te enseña dónde está el botón de exportar.</p>
+<p style="margin: 0; flex: 1 1 320px; max-width: 460px">Puedes importar el mismo fichero cada mes: lo que ya estaba no se duplica. Las permutas entre criptos y las recompensas de Kraken entran con su valor de mercado.</p>
+</div>
+</section>
+
+<section aria-labelledby="tax-title" class="q-band" style="margin-top: 160px; background: var(--q-surface); color: var(--q-text); border-top: 1px solid var(--q-border); border-bottom: 1px solid var(--q-border)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 120px 24px; display: flex; flex-wrap: wrap; gap: 56px 96px">
+<div style="flex: 4 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<h2 id="tax-title" style="margin: 0; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.02; font-weight: 600; letter-spacing: -0.04em">Llegas a la renta con las cuentas hechas.</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--q-body)">Ganancias y pérdidas por lotes FIFO, la pérdida que se aplaza cuando recompras en dos meses, las permutas entre criptos y lo que arrastras de otros años. Toca una cifra y ves de qué operaciones sale.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--q-muted)">Régimen común (Canarias incluida) y foral de Bizkaia. Gipuzkoa, Álava y Navarra, más adelante. Es una estimación para preparar la declaración, no asesoramiento fiscal.</p>
+</div>
+<div style="flex: 6 1 440px; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--q-text); font-size: 14px"><span style="font-weight: 600">Ejercicio 2026</span><span style="color: var(--q-muted)">Régimen común</span></div>
+<div class="q-row"><span><span style="color: var(--q-muted)">Venta</span> · Fondo EE. UU.</span><span class="q-mono" style="color: var(--q-positive)">+842,10 €</span></div>
+<div class="q-row"><span><span style="color: var(--q-muted)">Venta</span> · Fondo mundial</span><span class="q-mono" style="color: var(--q-positive)">+454,80 €</span></div>
+<div class="q-row"><span><span style="color: var(--q-muted)">Permuta</span> · ETH → BTC</span><span class="q-mono" style="color: var(--q-negative)">−12,30 €</span></div>
+<div class="q-row"><span><span style="color: var(--q-muted)">Venta</span> · Atlas Software <span style="color: var(--q-muted); font-size: 13px">— aplazada, recompraste en dos meses</span></span><span class="q-mono" style="color: var(--q-muted); text-decoration: line-through">−310,40 €</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding-top: 28px">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: var(--q-muted)">Base del ahorro</span><span class="q-mono" style="font-size: clamp(28px, 3.4vw, 44px); letter-spacing: -0.03em">1284,60 €</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: var(--q-muted)">Cuota estimada</span><span class="q-mono" style="font-size: clamp(28px, 3.4vw, 44px); letter-spacing: -0.03em">244,07 €</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="privacidad" aria-labelledby="priv-title" style="max-width: 1200px; margin: 0 auto; padding: 160px 24px 0; display: flex; flex-wrap: wrap; gap: 48px 96px">
+<div style="flex: 4 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<h2 id="priv-title" style="margin: 0; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.02; font-weight: 600; letter-spacing: -0.04em">Lo que Quoin no hace.</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--q-body)">Si usas Quoin también en el ordenador, el móvil se sincroniza con él por el Wi‑Fi de casa: escaneas un QR una vez y los datos viajan cifrados, sin pasar por internet.</p>
+<a class="q-link" href="Privacidad.dc.html" style="align-self: flex-start; font-size: 15px">Política de privacidad</a>
+</div>
+<ul style="flex: 6 1 440px; min-width: 0; margin: 0; padding: 0; list-style: none; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.25; font-weight: 500; letter-spacing: -0.02em">
+<li style="padding: 18px 0; border-bottom: 1px solid var(--q-border)">No te pide cuenta, correo ni contraseña.</li>
+<li style="padding: 18px 0; border-bottom: 1px solid var(--q-border)">No sube tu cartera a ningún servidor. No hay servidor.</li>
+<li style="padding: 18px 0; border-bottom: 1px solid var(--q-border)">No se conecta a tu broker.</li>
+<li style="padding: 18px 0; border-bottom: 1px solid var(--q-border)">No lleva anuncios ni analítica.</li>
+<li style="padding: 18px 0; border-bottom: 1px solid var(--q-border)">No te dice qué comprar.</li>
+</ul>
+</section>
+
+<section aria-labelledby="pc-title" style="max-width: 1200px; margin: 0 auto; padding: 160px 24px 0; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 48px 96px">
+<div style="flex: 4 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<h2 id="pc-title" style="margin: 0; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.02; font-weight: 600; letter-spacing: -0.04em">En el ordenador, un poco más.</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--q-body)">La versión de escritorio añade la rentabilidad descontando la inflación con el IPC del INE y lo que hay dentro de tus fondos: si una empresa pesa más de lo que crees, te avisa. Llegarán también al móvil.</p>
+</div>
+<div style="flex: 6 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 13px; color: var(--q-muted)">{{basisCaption}}</span>
+<span class="q-mono" style="font-size: 40px; letter-spacing: -0.03em; color: var(--q-positive)">{{valueLabel}}</span>
+</div>
+<div role="group" aria-label="Base de cálculo" style="display: inline-flex; gap: 2px; padding: 3px; border: 1px solid var(--q-border); border-radius: 999px">
+<button type="button" onClick="{{setNominal}}" aria-pressed="{{nomPressed}}" style="height: 32px; padding: 0 14px; border: 0; border-radius: 999px; font-family: inherit; font-size: 13px; cursor: pointer; background: {{nomBg}}; color: {{nomFg}}">Nominal</button>
+<button type="button" onClick="{{setReal}}" aria-pressed="{{realPressed}}" style="height: 32px; padding: 0 14px; border: 0; border-radius: 999px; font-family: inherit; font-size: 13px; cursor: pointer; background: {{realBg}}; color: {{realFg}}">Descontando el IPC</button>
+</div>
+</div>
+<svg viewBox="0 0 560 220" role="img" aria-label="{{chartLabel}}" style="width: 100%; height: auto; display: block">
+<path d="M6 214H554" fill="none" stroke-width="1" style="stroke: var(--q-border)"></path>
+<path d="M6.0 199.4 H52.4 V188.9 H98.9 V178.4 H145.3 V167.9 H191.8 V157.4 H238.2 V146.9 H284.6 V136.4 H331.1 V125.9 H377.5 V115.4 H424.0 V104.9 H470.4 V94.4 H516.8 V83.9 H554.0" fill="none" stroke-width="1.2" stroke-dasharray="3 4" style="stroke: var(--q-muted)"></path>
+<path class="q-draw" pathLength="1" d="{{linePath}}" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" style="stroke: var(--q-accent)"></path>
+</svg>
+<p style="margin: 0; font-size: 13px; color: var(--q-muted)">Línea continua: valor de la cartera. Discontinua: lo que has aportado.</p>
+</div>
+</section>
+
+<section id="descarga" aria-labelledby="dl-title" style="max-width: 1200px; margin: 0 auto; padding: 160px 24px 0">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px 24px; padding-bottom: 24px; border-bottom: 1px solid var(--q-text)">
+<h2 id="dl-title" style="margin: 0; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.02; font-weight: 600; letter-spacing: -0.04em">Descarga</h2>
+<a class="q-link" href="https://github.com/aritzmmartinez/quoin/blob/main/CHANGELOG.md" style="font-size: 14px">Versión <span class="q-mono">0.17.0</span>, 23 de noviembre</a>
+</div>
+<div style="display: flex; flex-wrap: wrap">
+<div style="flex: 1 1 380px; min-width: 0; padding: 32px 48px 0 0; display: flex; flex-direction: column; gap: 14px">
+<h3 style="margin: 0; font-size: 22px; font-weight: 600">Android <span style="font-size: 14px; font-weight: 400; color: var(--q-muted)">· beta cerrada</span></h3>
+<p style="margin: 0; max-width: 440px; font-size: 16px; line-height: 1.6; color: var(--q-body)">Funciona sola, sin ordenador. Entra en el grupo de testers y te llegará la invitación de Google Play.</p>
+<a class="q-link" href="#beta" style="align-self: flex-start; font-size: 15px">Cómo entrar en la beta</a>
+</div>
+<div style="flex: 1 1 380px; min-width: 0; padding: 32px 0 0; display: flex; flex-direction: column; gap: 14px">
+<h3 style="margin: 0; font-size: 22px; font-weight: 600">Ordenador <span style="font-size: 14px; font-weight: 400; color: var(--q-muted)">· gratis</span></h3>
+<p style="margin: 0; max-width: 440px; font-size: 16px; line-height: 1.6; color: var(--q-body)">Con Docker, en tu equipo. Luego abres <span class="q-mono" style="font-size: 14px">localhost:3000</span> en el navegador.</p>
+<pre class="q-mono" style="margin: 0; padding: 16px 18px; background: var(--q-surface); border-radius: 12px; overflow-x: auto; font-size: 13px; line-height: 1.7; color: var(--q-body)">docker run -d --name quoin \
+  -p 127.0.0.1:3000:3000 \
+  -v quoin-data:/app/data \
+  aritzmmartinez/quoin</pre>
+<p style="margin: 0; font-size: 15px"><a class="q-link" href="https://github.com/aritzmmartinez/quoin#getting-started">Guía de instalación</a> <span style="color: var(--q-faint)">·</span> <a class="q-link" href="https://hub.docker.com/r/aritzmmartinez/quoin">Docker Hub</a></p>
+</div>
+</div>
+</section>
+
+<section id="preguntas" aria-labelledby="faq-title" style="max-width: 1200px; margin: 0 auto; padding: 160px 24px 0; display: flex; flex-wrap: wrap; gap: 32px 96px">
+<h2 id="faq-title" style="flex: 4 1 320px; margin: 0; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.02; font-weight: 600; letter-spacing: -0.04em">Preguntas</h2>
+<div style="flex: 6 1 440px; min-width: 0; border-top: 1px solid var(--q-border)">
+<details style="border-bottom: 1px solid var(--q-border)"><summary style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; padding: 14px 0; font-size: 17px; font-weight: 500">¿De dónde salen los precios?<svg class="q-chev" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke-width="1.5" stroke-linecap="round" style="stroke: var(--q-muted)"></path></svg></summary><p style="margin: 0 0 20px; font-size: 15px; line-height: 1.65; color: var(--q-body)">Las criptomonedas, de los cierres públicos de Kraken. Las acciones y los ETF, de Quoin en tu ordenador cuando sincronizas. Sin ordenador, se muestran a su coste y marcadas como sin precio.</p></details>
+<details style="border-bottom: 1px solid var(--q-border)"><summary style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; padding: 14px 0; font-size: 17px; font-weight: 500">¿Qué brokers admite?<svg class="q-chev" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke-width="1.5" stroke-linecap="round" style="stroke: var(--q-muted)"></path></svg></summary><p style="margin: 0 0 20px; font-size: 15px; line-height: 1.65; color: var(--q-body)">Trade Republic y Kraken. Indexa Capital es el siguiente. Si falta el tuyo, <a class="q-link" href="https://github.com/aritzmmartinez/quoin/issues/new">pídelo en GitHub</a>.</p></details>
+<details style="border-bottom: 1px solid var(--q-border)"><summary style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; padding: 14px 0; font-size: 17px; font-weight: 500">¿Sirve si no vivo en Bizkaia?<svg class="q-chev" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke-width="1.5" stroke-linecap="round" style="stroke: var(--q-muted)"></path></svg></summary><p style="margin: 0 0 20px; font-size: 15px; line-height: 1.65; color: var(--q-body)">Sí, si tributas en régimen común, también en Canarias. Gipuzkoa, Álava y Navarra llegarán más adelante.</p></details>
+<details style="border-bottom: 1px solid var(--q-border)"><summary style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; padding: 14px 0; font-size: 17px; font-weight: 500">¿Cuándo sale la app?<svg class="q-chev" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke-width="1.5" stroke-linecap="round" style="stroke: var(--q-muted)"></path></svg></summary><p style="margin: 0 0 20px; font-size: 15px; line-height: 1.65; color: var(--q-body)">Antes de publicarla, Google pide que al menos 12 personas la prueben durante 14 días. Después abriremos la preinscripción en Google Play.</p></details>
+<details style="border-bottom: 1px solid var(--q-border)"><summary style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; padding: 14px 0; font-size: 17px; font-weight: 500">¿Cuánto cuesta?<svg class="q-chev" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke-width="1.5" stroke-linecap="round" style="stroke: var(--q-muted)"></path></svg></summary><p style="margin: 0 0 20px; font-size: 15px; line-height: 1.65; color: var(--q-body)">La versión de ordenador es gratuita. La app no tendrá anuncios; su precio lo diremos antes del lanzamiento.</p></details>
+</div>
+</section>
+
+<section id="beta" aria-labelledby="beta-title" style="max-width: 1200px; margin: 0 auto; padding: 200px 24px 120px">
+<h2 id="beta-title" style="margin: 0; max-width: 14ch; font-size: clamp(44px, 6.6vw, 88px); line-height: .98; font-weight: 600; letter-spacing: -0.045em">Necesito doce personas que la prueben.</h2>
+<div style="margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; gap: 20px 32px">
+<a class="q-btn" href="#" style="display: inline-flex; align-items: center; min-height: 50px; padding: 0 24px; border-radius: 999px; background: var(--q-accent); color: var(--q-on-accent); font-size: 15px; font-weight: 600; text-decoration: none">Entrar en el grupo de testers</a>
+<p style="margin: 0; max-width: 460px; font-size: 14px; line-height: 1.6; color: var(--q-muted)">Es un grupo de Google: necesitas una cuenta de Google y un móvil Android. Tu correo lo gestiona Google, no Quoin.</p>
+</div>
+</section>
+
+</main>
+
+<footer style="border-top: 1px solid var(--q-border)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 32px; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px">
+<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 14px">
+<span style="display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600"><svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" style="fill: var(--q-accent)"></rect><rect x="9.25" y="9.25" width="13.5" height="13.5" rx="2.75" fill="none" stroke-width="2.5" style="stroke: var(--q-on-accent)"></rect><rect x="17" y="17" width="10" height="10" style="fill: var(--q-accent)"></rect></svg>Quoin</span>
+<p style="margin: 0; max-width: 340px; font-size: 14px; line-height: 1.6; color: var(--q-muted)">Hecho en Bilbao por Aritz Martínez. Código abierto bajo AGPL‑3.0.</p>
+<div style="position: relative; align-self: flex-start">
+<button type="button" onClick="{{toggleLang}}" aria-haspopup="true" aria-expanded="{{langExpanded}}" aria-label="Idioma: {{langName}}" style="display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--q-border); background: transparent; color: var(--q-body); font-family: inherit; font-size: 14px; cursor: pointer">
+<span>{{langName}}</span>
+<svg width="12" height="12" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 10l4-4 4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+<sc-if value="{{langOpen}}" hint-placeholder-val="{{ false }}">
+<ul class="q-menu" aria-label="Idiomas">
+<sc-for list="{{langs}}" as="l" hint-placeholder-count="5">
+<li><button type="button" class="q-option" onClick="{{l.pick}}" aria-current="{{l.current}}" lang="{{l.code}}"><span>{{l.name}}</span><sc-if value="{{l.selected}}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></sc-if></button></li>
+</sc-for>
+</ul>
+</sc-if>
+</div>
+</div>
+<nav aria-label="Enlaces" style="display: flex; flex-wrap: wrap; align-content: flex-start; gap: 10px 28px; font-size: 14px">
+<a class="q-foot" href="https://github.com/aritzmmartinez/quoin">GitHub</a>
+<a class="q-foot" href="https://github.com/aritzmmartinez/quoin/blob/main/CHANGELOG.md">Novedades</a>
+<a class="q-foot" href="https://github.com/sponsors/aritzmmartinez">Apoyar el proyecto</a>
+<a class="q-foot" href="Privacidad.dc.html">Privacidad</a>
+<a class="q-foot" href="mailto:quoin@aritzmmartinez.dev">Contacto</a>
+</nav>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; line-height: 1.6; color: var(--q-muted)">
+<p style="margin: 0">Quoin ofrece información, no asesoramiento financiero. Market Data: Kraken. Source: ECB statistics.</p>
+<p style="margin: 0">Quoin es un proyecto independiente. Trade Republic, Kraken y los demás brokers se nombran solo para indicar con qué ficheros es compatible; Quoin no está afiliado a ninguno ni cuenta con su respaldo. Android y Google Play son marcas de Google LLC.</p>
+</div>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animate":{"editor":"boolean","default":true,"section":"Movimiento"},"$preview":{"width":1440,"height":6200}}'>
+class Component extends DCLogic {
+  componentDidMount() {
+    var self = this;
+    this.onScroll = function (e) {
+      var t = e && e.target;
+      var y = window.scrollY || (t && t !== document && typeof t.scrollTop === 'number' ? t.scrollTop : 0) || 0;
+      var floating = y > 24;
+      if (!self.state || self.state.floating !== floating) self.setState({ floating: floating });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true, capture: true });
+    this.onScroll();
+  }
+  componentWillUnmount() {
+    if (this.onScroll) window.removeEventListener('scroll', this.onScroll, { capture: true });
+  }
+  renderVals() {
+    var animate = this.props.animate !== false;
+    var st = this.state || {};
+    var self = this;
+    var light = st.theme === 'light';
+    var lang = st.lang || 'es';
+    var LANGS = [
+      { code: 'es', name: 'Castellano' },
+      { code: 'ca', name: 'Català' },
+      { code: 'eu', name: 'Euskara' },
+      { code: 'gl', name: 'Galego' },
+      { code: 'en', name: 'English' }
+    ];
+    var langName = 'Castellano';
+    var langs = LANGS.map(function (l) {
+      if (l.code === lang) langName = l.name;
+      return {
+        code: l.code, name: l.name, selected: l.code === lang,
+        current: l.code === lang ? 'true' : 'false',
+        pick: function () { self.setState({ lang: l.code, langOpen: false }); }
+      };
+    });
+    var real = st.basis === 'real';
+    var NOM = 'M6.0 199.4 L15.3 199.2 L24.6 194.2 L33.9 194.3 L43.2 190.3 L52.4 190.2 L61.7 185.3 L71.0 184.4 L80.3 180.6 L89.6 181.4 L98.9 176.1 L108.2 175.5 L117.5 169.3 L126.7 168.1 L136.0 163.4 L145.3 163.4 L154.6 155.5 L163.9 155.5 L173.2 151.7 L182.5 152.9 L191.8 147.9 L201.1 147.3 L210.3 142.9 L219.6 142.6 L228.9 137.2 L238.2 135.6 L247.5 128.6 L256.8 127.7 L266.1 126.2 L275.4 124.4 L284.6 122.3 L293.9 122.1 L303.2 120.1 L312.5 119.6 L321.8 116.2 L331.1 115.1 L340.4 102.5 L349.7 102.0 L358.9 94.6 L368.2 97.4 L377.5 93.0 L386.8 90.5 L396.1 85.5 L405.4 83.7 L414.7 78.1 L424.0 80.3 L433.3 73.2 L442.5 74.9 L451.8 63.7 L461.1 64.4 L470.4 56.7 L479.7 55.7 L489.0 46.9 L498.3 48.1 L507.6 38.8 L516.8 38.3 L526.1 27.7 L535.4 24.0 L544.7 17.8 L554.0 20.0';
+    var REAL = 'M6.0 199.4 L15.3 199.2 L24.6 194.3 L33.9 194.4 L43.2 190.6 L52.4 190.5 L61.7 185.7 L71.0 184.9 L80.3 181.3 L89.6 182.1 L98.9 177.1 L108.2 176.5 L117.5 170.6 L126.7 169.5 L136.0 165.1 L145.3 165.3 L154.6 157.8 L163.9 157.9 L173.2 154.5 L182.5 155.7 L191.8 151.1 L201.1 150.7 L210.3 146.7 L219.6 146.6 L228.9 141.7 L238.2 140.3 L247.5 134.0 L256.8 133.3 L266.1 132.2 L275.4 130.6 L284.6 128.9 L293.9 128.9 L303.2 127.3 L312.5 127.0 L321.8 124.1 L331.1 123.4 L340.4 112.1 L349.7 111.9 L358.9 105.4 L368.2 108.2 L377.5 104.5 L386.8 102.5 L396.1 98.3 L405.4 96.9 L414.7 92.2 L424.0 94.5 L433.3 88.5 L442.5 90.3 L451.8 80.6 L461.1 81.7 L470.4 75.2 L479.7 74.7 L489.0 67.2 L498.3 68.7 L507.6 60.9 L516.8 60.8 L526.1 52.0 L535.4 49.2 L544.7 44.2 L554.0 46.5';
+    var on = 'var(--q-accent)', onFg = 'var(--q-on-accent)', off = 'transparent', offFg = 'var(--q-muted)';
+    return {
+      rootClass: ['q-root', animate ? 'q-motion' : '', light ? 'q-light' : ''].join(' '),
+      navClass: st.floating ? 'q-nav q-float' : 'q-nav',
+      animate: animate,
+      isLight: light,
+      isDark: !light,
+      themeLabel: light ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro',
+      toggleTheme: function () { self.setState({ theme: light ? 'dark' : 'light' }); },
+      langs: langs,
+      langName: langName,
+      langOpen: !!st.langOpen,
+      langExpanded: st.langOpen ? 'true' : 'false',
+      toggleLang: function () { self.setState({ langOpen: !st.langOpen }); },
+      setNominal: function () { self.setState({ basis: 'nominal' }); },
+      setReal: function () { self.setState({ basis: 'real' }); },
+      nomPressed: real ? 'false' : 'true',
+      realPressed: real ? 'true' : 'false',
+      nomBg: real ? off : on, nomFg: real ? offFg : onFg,
+      realBg: real ? on : off, realFg: real ? onFg : offFg,
+      linePath: real ? REAL : NOM,
+      valueLabel: real ? '+11,2 %' : '+18,4 %',
+      basisCaption: real ? 'Por encima de lo aportado, en euros de hoy' : 'Por encima de lo aportado',
+      chartLabel: real ? 'Valor de una cartera de ejemplo en euros de hoy frente a lo aportado' : 'Valor de una cartera de ejemplo frente a lo aportado'
+    };
+  }
+}
+</script>
+</body>
+</html>

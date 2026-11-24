@@ -1,0 +1,79 @@
+---
+import Section from "../Section.astro";
+import AnimatedNumber from "~/islands/AnimatedNumber";
+import { useTranslations, type Locale } from "~/i18n";
+import { demo } from "~/lib/demo";
+import { EUR, SIGNED_EUR, fmt } from "~/lib/format";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const nl = t.numberLocale;
+const rows = t.tax.rows.map((name, i) => ({
+  name,
+  kind: i === 2 ? t.tax.swap : t.tax.sale,
+  amount: demo.taxRows[i] ?? 0,
+  deferred: i === 3,
+}));
+const totals = [
+  [t.tax.base, demo.savingsBase],
+  [t.tax.due, demo.taxDue],
+] as const;
+---
+
+<Section id="tax" title={t.tax.title} band>
+  <Fragment slot="intro">
+    <p class="m-0 text-[17px] leading-relaxed text-body">{t.tax.body}</p>
+    <p class="m-0 text-[17px] leading-relaxed text-body">{t.tax.income}</p>
+    <p class="m-0 text-sm leading-relaxed text-muted">{t.tax.regimes}</p>
+  </Fragment>
+  <div class="flex items-baseline justify-between gap-3 border-b border-text pb-3.5 text-sm">
+    <span class="font-semibold">{t.tax.year}</span>
+    <span class="text-muted">{t.tax.regime}</span>
+  </div>
+  <ul class="m-0 list-none p-0">
+    {rows.map((r) => (
+      <li class="grid grid-cols-[minmax(0,1fr)_auto] gap-3 border-b border-border py-3.5 text-[15px]">
+        <span>
+          <span class="text-muted">{r.kind}</span> · {r.name}
+          {r.deferred && (
+            <span class="text-[13px] text-muted"> — {t.tax.deferred}</span>
+          )}
+        </span>
+        {r.deferred ? (
+          <s class="font-mono text-muted tabular-nums">
+            {fmt(nl, r.amount, SIGNED_EUR)}
+          </s>
+        ) : (
+          <span
+            class:list={[
+              "font-mono tabular-nums",
+              r.amount >= 0 ? "text-positive" : "text-negative",
+            ]}
+          >
+            {fmt(nl, r.amount, SIGNED_EUR)}
+          </span>
+        )}
+      </li>
+    ))}
+  </ul>
+  <dl class="m-0 grid grid-cols-2 gap-6 pt-7">
+    {totals.map(([label, value]) => (
+      <div class="flex flex-col gap-1.5">
+        <dt class="text-[13px] text-muted">{label}</dt>
+        <dd class="m-0">
+          <AnimatedNumber
+            client:visible
+            value={value}
+            locale={nl}
+            format={EUR}
+            className="font-mono text-[clamp(28px,3.4vw,44px)] tracking-[-0.03em] tabular-nums"
+          />
+        </dd>
+      </div>
+    ))}
+  </dl>
+</Section>

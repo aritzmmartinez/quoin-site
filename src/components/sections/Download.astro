@@ -1,0 +1,72 @@
+---
+import Rich from "../Rich.astro";
+import { useTranslations, type Locale } from "~/i18n";
+import { BETA_GROUP, DOCKER_RUN, links } from "~/lib/links";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const d = t.download;
+---
+
+<section
+  id="download"
+  aria-labelledby="dl-title"
+  class="mx-auto max-w-300 px-6 pt-28 sm:pt-40"
+>
+  <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 border-b border-text pb-6">
+    <h2
+      id="dl-title"
+      class="m-0 text-[clamp(34px,4.4vw,56px)] leading-[1.02] font-semibold tracking-[-0.04em]"
+    >
+      {d.title}
+    </h2>
+    <a class="link text-sm" href={links.changelog}>
+      {d.changelog}
+    </a>
+  </div>
+  <div class="flex flex-wrap">
+    <div class="flex min-w-0 flex-[1_1_380px] flex-col gap-3.5 pt-8 sm:pr-12">
+      <h3 class="m-0 text-[22px] font-semibold">
+        {d.android.title}{" "}
+        <span class="text-sm font-normal text-muted">
+          · {BETA_GROUP ? d.android.statusOpen : d.android.status}
+        </span>
+      </h3>
+      <p class="m-0 max-w-270 text-base leading-relaxed text-body">
+        {BETA_GROUP ? (
+          <Rich parts={d.android.bodyOpen} href={BETA_GROUP} />
+        ) : (
+          d.android.body
+        )}
+      </p>
+    </div>
+    <div class="flex min-w-0 flex-[1_1_380px] flex-col gap-3.5 pt-8">
+      <h3 class="m-0 text-[22px] font-semibold">
+        {d.desktop.title}{" "}
+        <span class="text-sm font-normal text-muted">· {d.desktop.status}</span>
+      </h3>
+      <p class="m-0 max-w-270 text-base leading-relaxed text-body">
+        <Rich parts={d.desktop.body} />
+      </p>
+      <pre
+        class="m-0 overflow-x-auto rounded-xl bg-surface px-4.5 py-4 font-mono text-[13px] leading-[1.7] text-body"
+        tabindex="0"
+      ><code>{DOCKER_RUN}</code></pre>
+      <p class="m-0 flex flex-wrap gap-x-2 text-[15px]">
+        <a class="link" href={links.dockerGuide}>
+          {d.desktop.guide}
+        </a>
+        <span class="text-muted" aria-hidden="true">
+          ·
+        </span>
+        <a class="link" href={links.dockerHub}>
+          {d.desktop.hub}
+        </a>
+      </p>
+    </div>
+  </div>
+</section>

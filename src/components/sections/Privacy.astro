@@ -1,0 +1,31 @@
+---
+import Section from "../Section.astro";
+import { useTranslations, type Locale } from "~/i18n";
+import { links } from "~/lib/links";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<Section id="privacy" title={t.privacy.title}>
+  <Fragment slot="intro">
+    <p class="m-0 text-[17px] leading-relaxed text-body">{t.privacy.body}</p>
+    <p class="m-0 text-[17px] leading-relaxed text-body">
+      <a class="link" href={links.repo}>
+        {t.privacy.openSource}
+      </a>
+    </p>
+    <a class="link self-start text-[15px]" href={`/${lang}/privacy`}>
+      {t.privacy.policy}
+    </a>
+  </Fragment>
+  <ul class="m-0 list-none p-0 text-[clamp(22px,2.4vw,30px)] leading-tight font-medium tracking-[-0.02em]">
+    {t.privacy.items.map((item) => (
+      <li class="border-b border-border py-4.5">{item}</li>
+    ))}
+  </ul>
+</Section>

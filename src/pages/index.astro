@@ -1,0 +1,29 @@
+---
+import { locales, defaultLocale, useTranslations } from "~/i18n";
+import { LOCALE_REDIRECT_SCRIPT } from "~/lib/locale-redirect";
+---
+
+<!doctype html>
+<html lang={defaultLocale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quoin</title>
+    <meta name="robots" content="noindex" />
+    <script is:inline set:html={LOCALE_REDIRECT_SCRIPT} />
+    <noscript>
+      <meta http-equiv="refresh" content={`0; url=/${defaultLocale}`} />
+    </noscript>
+  </head>
+  <body>
+    <ul>
+      {locales.map((l) => (
+        <li>
+          <a href={`/${l}`} hreflang={l} lang={l}>
+            Quoin · {useTranslations(l).langName}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </body>
+</html>

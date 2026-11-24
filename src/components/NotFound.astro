@@ -1,0 +1,82 @@
+---
+import "~/styles/global.css";
+import Logo from "./Logo.astro";
+import PillButton from "./PillButton.astro";
+import { THEME_SCRIPT } from "~/lib/theme";
+import { NOT_FOUND_LANG_SCRIPT } from "~/lib/locale-redirect";
+import { useTranslations, type Locale } from "~/i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang } = Astro.props;
+const shown: Locale[] = lang ? [lang] : ["en", "es"];
+const hiddenUnless = (l: Locale) =>
+  lang
+    ? undefined
+    : l === "es"
+      ? "hidden [:root:lang(es)_&]:flex"
+      : "flex [:root:lang(es)_&]:hidden";
+---
+
+<!doctype html>
+<html lang={lang ?? "en"} class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <script is:inline set:html={THEME_SCRIPT} />
+    {!lang && <script is:inline set:html={NOT_FOUND_LANG_SCRIPT} />}
+    <title>404 · Quoin</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body class="flex min-h-screen flex-col bg-bg text-text">
+    <header class="mx-auto w-full max-w-300 px-6 pt-6">
+      <a
+        href={lang ? `/${lang}` : "/"}
+        class="inline-flex items-center gap-2.5 text-text no-underline"
+        aria-label="Quoin"
+      >
+        <Logo />
+        <span class="text-base font-semibold" aria-hidden="true">
+          Quoin
+        </span>
+      </a>
+    </header>
+
+    <main class="flex flex-1 flex-col">
+      {shown.map((l) => {
+        const t = useTranslations(l).notFound;
+        return (
+          <div
+            lang={lang ? undefined : l}
+            class:list={[
+              "mx-auto w-full max-w-300 flex-1 flex-col justify-center gap-10 px-6 py-20",
+              hiddenUnless(l) ?? "flex",
+            ]}
+          >
+            <p class="m-0 font-mono text-sm text-muted tabular-nums">404</p>
+            <h1 class="m-0 max-w-[14ch] text-[clamp(44px,6.6vw,88px)] leading-[0.98] font-semibold tracking-[-0.045em]">
+              {t.title}
+            </h1>
+            <p class="m-0 max-w-115 text-[17px] leading-relaxed text-body">
+              {t.body}
+            </p>
+            <div>
+              <PillButton href={`/${l}`} size="lg">
+                {t.cta}
+              </PillButton>
+            </div>
+          </div>
+        );
+      })}
+    </main>
+
+    <footer class="border-t border-border">
+      <p class="mx-auto my-0 max-w-300 px-6 py-6 text-sm text-muted">
+        Quoin · AGPL‑3.0
+      </p>
+    </footer>
+  </body>
+</html>

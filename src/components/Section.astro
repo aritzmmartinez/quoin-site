@@ -1,0 +1,52 @@
+---
+interface Props {
+  id?: string;
+  title: string;
+  layout?: "split" | "stack";
+  band?: boolean;
+  class?: string;
+}
+
+const { id, title, layout = "split", band = false, class: extra } = Astro.props;
+const headingId = `${id ?? title.toLowerCase().replace(/\W+/g, "-")}-title`;
+---
+
+<section
+  id={id}
+  aria-labelledby={headingId}
+  class:list={[
+    band
+      ? "mt-28 border-y border-border bg-surface sm:mt-40"
+      : "mx-auto max-w-300 px-6 pt-28 sm:pt-40",
+    extra,
+  ]}
+>
+  <div
+    class:list={[
+      "flex flex-wrap gap-x-24 gap-y-10",
+      layout === "stack" && "flex-col",
+      band && "mx-auto max-w-300 px-6 py-20 sm:py-30",
+    ]}
+  >
+    <div
+      class:list={[
+        "flex min-w-0 flex-col gap-5",
+        layout === "split" && "flex-[4_1_320px]",
+      ]}
+    >
+      <h2
+        id={headingId}
+        class:list={[
+          "m-0 font-semibold text-balance",
+          "text-[clamp(34px,4.4vw,56px)] leading-[1.02] tracking-[-0.04em]",
+        ]}
+      >
+        {title}
+      </h2>
+      <slot name="intro" />
+    </div>
+    <div class:list={["min-w-0", layout === "split" && "flex-[6_1_440px]"]}>
+      <slot />
+    </div>
+  </div>
+</section>

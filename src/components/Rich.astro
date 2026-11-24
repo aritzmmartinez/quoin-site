@@ -1,0 +1,37 @@
+---
+type Part =
+  | string
+  | { em: string }
+  | { strong: string }
+  | { muted: string }
+  | { code: string }
+  | { n: number }
+  | { link: string };
+
+interface Props {
+  parts: readonly Part[];
+  href?: string;
+}
+
+const { parts, href } = Astro.props;
+---
+
+{parts.map((p) =>
+  typeof p === "string" ? (
+    p
+  ) : "em" in p ? (
+    <span class="text-text">{p.em}</span>
+  ) : "strong" in p ? (
+    <strong class="font-medium text-text">{p.strong}</strong>
+  ) : "muted" in p ? (
+    <span class="text-muted">{p.muted}</span>
+  ) : "code" in p ? (
+    <code class="font-mono text-[0.9em]">{p.code}</code>
+  ) : "n" in p ? (
+    <span class="font-mono font-normal tabular-nums">{p.n}</span>
+  ) : (
+    <a class="link" href={href}>
+      {p.link}
+    </a>
+  ),
+)}

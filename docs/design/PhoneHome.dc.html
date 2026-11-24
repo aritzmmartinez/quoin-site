@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Quoin móvil · Inicio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.qp-num{font-variant-numeric:tabular-nums}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; border: 10px solid var(--q-border-strong, #34343a); border-radius: 56px; background: var(--q-bg, #0a0a0b); overflow: hidden; display: flex; flex-direction: column; font-family: 'Geist', ui-sans-serif, system-ui, sans-serif; color: var(--q-text, #ffffff); -webkit-font-smoothing: antialiased">
+
+<div style="padding: 26px 22px 0; display: flex; align-items: center; justify-content: space-between">
+<span style="font-size: 26px; font-weight: 600; letter-spacing: -0.02em">Inicio</span>
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border: 1px solid var(--q-border, #26262a); border-radius: 999px; font-size: 11px; color: var(--q-body, #c9c9cf)"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: var(--q-positive, #00d68f)"></span>Sincronizado</span>
+</div>
+
+<div style="padding: 24px 22px 0; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; color: var(--q-muted, #8b8b93)">Patrimonio</span>
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 40px; font-weight: 600; letter-spacing: -0.035em">{{valueText}}</span>
+<span class="qp-num" style="font-size: 13px; color: var(--q-muted, #8b8b93)">Coste <span style="font-family: 'Geist Mono', ui-monospace, monospace; color: var(--q-body, #c9c9cf)">15.800,00 €</span> · <span style="font-family: 'Geist Mono', ui-monospace, monospace; color: var(--q-positive, #00d68f)">+1504,82 €</span></span>
+</div>
+
+<div style="margin: 18px 22px 0; padding: 11px 14px; border-radius: 16px; background: var(--q-surface, #151518); display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--q-body, #c9c9cf)">
+<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="flex: 0 0 auto"><path d="M12 3.5 21 19.5H3Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path><path d="M12 10v4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path><circle cx="12" cy="17" r=".9" fill="currentColor"></circle></svg>
+<span>Oro físico supera tu límite del <span style="font-family: 'Geist Mono', ui-monospace, monospace">10 %</span></span>
+</div>
+
+<div style="margin: 22px 22px 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 12px; color: var(--q-muted, #8b8b93)">Realizado 2026</span><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 19px; font-weight: 500; color: var(--q-positive, #00d68f)">+1284,60 €</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 12px; color: var(--q-muted, #8b8b93)">Impuesto estimado</span><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 19px; font-weight: 500">244,07 €</span></div>
+</div>
+
+<div style="margin: 26px 22px 0; display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 15px; font-weight: 600">Distribución</span>
+<div role="img" aria-label="Distribución de ejemplo: renta variable 67,1 %, bonos 12,6 %, materias primas 12,4 %, cripto 7,9 %" style="display: flex; gap: 3px; height: 10px">
+<span style="flex: 67.1; border-radius: 5px; background: var(--q-accent, #f2f2f4)"></span>
+<span style="flex: 12.6; border-radius: 5px; background: var(--q-accent, #f2f2f4); opacity: .62"></span>
+<span style="flex: 12.4; border-radius: 5px; background: var(--q-accent, #f2f2f4); opacity: .38"></span>
+<span style="flex: 7.9; border-radius: 5px; background: var(--q-accent, #f2f2f4); opacity: .2"></span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; font-size: 12px; color: var(--q-body, #c9c9cf)">
+<span style="display: flex; justify-content: space-between"><span>Renta variable</span><span style="font-family: 'Geist Mono', ui-monospace, monospace">67,1 %</span></span>
+<span style="display: flex; justify-content: space-between"><span>Bonos</span><span style="font-family: 'Geist Mono', ui-monospace, monospace">12,6 %</span></span>
+<span style="display: flex; justify-content: space-between"><span>Materias primas</span><span style="font-family: 'Geist Mono', ui-monospace, monospace">12,4 %</span></span>
+<span style="display: flex; justify-content: space-between"><span>Cripto</span><span style="font-family: 'Geist Mono', ui-monospace, monospace">7,9 %</span></span>
+</div>
+</div>
+
+<div style="margin: 26px 22px 0; display: flex; flex-direction: column">
+<span style="font-size: 15px; font-weight: 600; padding-bottom: 6px">Mayores posiciones</span>
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 11px 0; border-bottom: 1px solid var(--q-border-subtle, #1f1f24); font-size: 14px"><span>Fondo mundial</span><span style="display: flex; flex-direction: column; align-items: flex-end; gap: 1px"><span style="font-family: 'Geist Mono', ui-monospace, monospace">7.994,83 €</span><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: var(--q-positive, #00d68f)">+11,2 %</span></span></div>
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 11px 0; border-bottom: 1px solid var(--q-border-subtle, #1f1f24); font-size: 14px"><span>Fondo EE. UU.</span><span style="display: flex; flex-direction: column; align-items: flex-end; gap: 1px"><span style="font-family: 'Geist Mono', ui-monospace, monospace">3.772,45 €</span><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: var(--q-positive, #00d68f)">+14,0 %</span></span></div>
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 11px 0; font-size: 14px"><span>Oro físico</span><span style="display: flex; flex-direction: column; align-items: flex-end; gap: 1px"><span style="font-family: 'Geist Mono', ui-monospace, monospace">2.145,80 €</span><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: var(--q-positive, #00d68f)">+6,3 %</span></span></div>
+</div>
+
+<div aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; height: 150px; background: linear-gradient(to bottom, transparent, var(--q-bg, #0a0a0b) 62%); pointer-events: none"></div>
+
+<div style="position: absolute; left: 14px; right: 14px; bottom: 18px; display: flex; align-items: center; gap: 10px">
+<nav aria-label="Secciones" style="flex: 1; height: 62px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 5px; background: var(--q-nav-bg, rgba(26,26,30,0.82)); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid var(--q-nav-border, rgba(255,255,255,0.1)); border-radius: 999px">
+<a href="#" aria-current="page" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border-radius: 999px; background: var(--q-surface-2, #1a1a1e); text-decoration: none; color: var(--q-text, #ffffff); font-size: 10px">
+<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V19a1.5 1.5 0 0 1-1.5 1.5h-3.5V15h-6v5.5H5.5A1.5 1.5 0 0 1 4 19Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path></svg>Inicio</a>
+<a href="#" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-decoration: none; color: var(--q-muted, #8b8b93); font-size: 10px">
+<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8a2.5 2.5 0 0 1 2.5-2.5H18V8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path><rect x="4" y="8" width="16" height="11.5" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.5"></rect><circle cx="16" cy="13.75" r="1.1" fill="currentColor"></circle></svg>Cartera</a>
+<a href="#" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-decoration: none; color: var(--q-muted, #8b8b93); font-size: 10px">
+<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V5M4 19.5h16M8 15l3.5-4 3 2.5L20 7.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Análisis</a>
+<a href="#" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-decoration: none; color: var(--q-muted, #8b8b93); font-size: 10px">
+<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path><circle cx="16" cy="7" r="2" fill="none" stroke="currentColor" stroke-width="1.5"></circle><circle cx="10" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.5"></circle></svg>Ajustes</a>
+</nav>
+<a href="#" aria-label="Importar movimientos" style="flex: 0 0 auto; width: 62px; height: 62px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--q-nav-bg, rgba(26,26,30,0.82)); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid var(--q-nav-border, rgba(255,255,255,0.1)); color: var(--q-text, #ffffff)">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
+</a>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animate":{"editor":"boolean","default":true,"section":"Movimiento"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  componentDidMount() {
+    var target = 17304.82;
+    var reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (this.props.animate === false || reduce || typeof requestAnimationFrame === 'undefined') {
+      this.setState({ v: target });
+      return;
+    }
+    var self = this;
+    var start = null;
+    var tick = function (t) {
+      if (start === null) start = t + 450;
+      var p = Math.min(1, Math.max(0, (t - start) / 1400));
+      self.setState({ v: target * (1 - Math.pow(1 - p, 3)) });
+      if (p < 1) self.frame = requestAnimationFrame(tick);
+    };
+    this.frame = requestAnimationFrame(tick);
+  }
+  componentWillUnmount() {
+    if (this.frame) cancelAnimationFrame(this.frame);
+  }
+  renderVals() {
+    var v = (this.state && typeof this.state.v === 'number') ? this.state.v : (this.props.animate === false ? 17304.82 : 0);
+    return {
+      valueText: new Intl.NumberFormat('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v) + ' €'
+    };
+  }
+}
+</script>
+</body>
+</html>

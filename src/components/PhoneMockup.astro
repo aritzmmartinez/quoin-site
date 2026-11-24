@@ -1,0 +1,250 @@
+---
+import AnimatedNumber from "~/islands/AnimatedNumber";
+import { useTranslations, type Locale } from "~/i18n";
+import { demo } from "~/lib/demo";
+import { EUR, PCT, SIGNED_EUR, SIGNED_PCT, fmt } from "~/lib/format";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const p = t.phone;
+const nl = t.numberLocale;
+const opacities = ["opacity-100", "opacity-60", "opacity-40", "opacity-20"];
+const GAP = 3;
+const usable = 346 - GAP * (demo.allocation.length - 1);
+let x = 0;
+const bars = demo.allocation.map((share) => {
+  const bar = { x, width: share * usable };
+  x += bar.width + GAP;
+  return bar;
+});
+const holdingIcons = {
+  globe: [
+    "M7.6 3.7C6.6 4.6 5.8 5.2 6.4 6.2C7 7.2 6.6 8 7.2 8.8C7.6 9.4 7.4 10 8.2 10.4C9 10.8 9.6 11.2 10.2 11.8C10.6 12.2 10.4 12.8 10.8 13.4C11.4 14.4 11.6 15.6 12 16.8C12.4 17.8 12.8 18.8 13.4 19.6C14.2 18.6 14.6 17.4 15.6 16.6C16.6 15.8 17.2 14.6 17.6 13.4C17.8 12.6 17.2 12 16.2 11.8C15.2 11.6 14.4 11.4 13.6 11C12.8 10.6 12 10.8 11.6 10.2C11.4 9.6 11.8 9 12.6 9C13.4 9 13.8 8.4 14.6 7.8C15.4 7.2 16.4 7 17 6.2C17.4 5.6 17.8 5.4 18.4 5.3",
+    "M20.6 8.5C19.6 9 19 10 19.4 11.2C19.7 12 20.4 12.6 21.1 13.4",
+    "M3 10C4 10.2 4.8 11 5 12C5.2 13 4.6 14 3.6 15.8",
+  ],
+  gold: [
+    "M6.13133 20H9.86867C12.1613 20 13.3077 20 13.7914 19.2306C13.8095 19.2018 13.8268 19.1724 13.8433 19.1425C14.2819 18.3438 13.7648 17.2572 12.7307 15.084C12.0371 13.6266 11.6903 12.8978 11.086 12.4765C11.0372 12.4425 10.9874 12.4101 10.9366 12.3795C10.3077 12 9.53848 12 8 12C6.46152 12 5.69228 12 5.06338 12.3795C5.01259 12.4101 4.96276 12.4425 4.91395 12.4765C4.30968 12.8978 3.9629 13.6266 3.26934 15.084C2.23521 17.2572 1.71814 18.3438 2.15674 19.1425C2.17317 19.1724 2.19046 19.2018 2.20859 19.2306C2.69231 20 3.83865 20 6.13133 20Z",
+    "M14.5469 12.0207C14.9432 12 15.4158 12 15.9989 12C17.5374 12 18.3067 12 18.9356 12.3795C18.9863 12.4101 19.0362 12.4425 19.085 12.4765C19.6893 12.8978 20.036 13.6266 20.7296 15.084C21.7637 17.2572 22.2808 18.3438 21.8422 19.1425C21.8258 19.1724 21.8085 19.2018 21.7904 19.2306C21.3066 20 20.1603 20 17.8676 20H16.7391",
+    "M17.6073 9C17.3909 8.47153 17.0924 7.84428 16.7306 7.08406C16.0371 5.62657 15.6903 4.89783 15.086 4.4765C15.0372 4.44247 14.9874 4.41011 14.9366 4.37946C14.3077 4 13.5385 4 12 4C10.4615 4 9.69227 4 9.06337 4.37946C9.01257 4.41011 8.96274 4.44247 8.91394 4.4765C8.30967 4.89783 7.96289 5.62657 7.26933 7.08405C6.90756 7.84427 6.60907 8.47153 6.39264 9",
+  ],
+} as const;
+const tiles = [
+  {
+    label: p.realized,
+    value: fmt(nl, demo.realized, SIGNED_EUR),
+    positive: true,
+  },
+  {
+    label: p.taxEstimate,
+    value: fmt(nl, demo.taxEstimate, EUR),
+    positive: false,
+  },
+];
+const tabIcons = [
+  "M4 10.5 12 4l8 6.5V19a1.5 1.5 0 0 1-1.5 1.5h-3.5V15h-6v5.5H5.5A1.5 1.5 0 0 1 4 19Z",
+  "M4 8a2.5 2.5 0 0 1 2.5-2.5H18V8M6.5 8H17.5A2.5 2.5 0 0 1 20 10.5v6.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17V8",
+  "M4 19.5V5M4 19.5h16M8 15l3.5-4 3 2.5L20 7.5",
+  "M4 7h10M18 7h2M4 17h4M12 17h8M16 5a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM10 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z",
+];
+---
+
+<div
+  role="img"
+  aria-label={p.label}
+  class="h-150 w-84 shrink-0 overflow-hidden max-[400px]:-my-4 max-[400px]:scale-[0.94]"
+>
+  <div
+    aria-hidden="true"
+    class="relative flex h-211 w-97.5 origin-top-left scale-[0.8615] flex-col overflow-hidden rounded-[56px] border-10 border-border-strong bg-bg text-text drop-shadow-[0_30px_60px_var(--color-shadow)]"
+  >
+    <div class="flex items-center justify-between px-5.5 pt-6.5">
+      <span class="text-xl font-semibold tracking-[-0.01em]">{p.title}</span>
+      <span class="inline-flex items-center gap-1.5 text-[13px] text-muted tabular-nums">
+        <span class="size-1.5 rounded-full bg-positive"></span>
+        {p.synced}
+      </span>
+    </div>
+
+    <div class="flex flex-col gap-1.5 px-5.5 pt-6">
+      <span class="text-[13px] text-muted">{p.netWorth}</span>
+      <AnimatedNumber
+        client:visible
+        value={demo.netWorth}
+        locale={nl}
+        format={EUR}
+        className="font-mono text-[34px] leading-[1.1] font-bold tracking-[-1px] tabular-nums"
+      />
+      <span class="text-[15px] text-muted">
+        <span class="font-mono font-medium text-positive">
+          {fmt(nl, demo.gain, SIGNED_EUR)} ·{" "}
+          {fmt(nl, demo.gain / demo.cost, SIGNED_PCT)}
+        </span>{" "}
+        {p.sinceStart}
+      </span>
+    </div>
+
+    <div class="mx-5.5 mt-4.5 flex items-center gap-2.5 rounded-2xl bg-surface px-3.5 py-2.75 text-xs text-body">
+      <svg width="16" height="16" viewBox="0 0 24 24" class="shrink-0">
+        <path
+          d="M12 3.5 21 19.5H3Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M12 10v4.5"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        ></path>
+        <circle cx="12" cy="17" r=".9" fill="currentColor"></circle>
+      </svg>
+      <span>
+        {p.alert}{" "}
+        <span class="font-mono">
+          {fmt(nl, demo.concentrationLimit, { style: "percent" })}
+        </span>
+      </span>
+    </div>
+
+    <div class="mx-5.5 mt-3 grid grid-cols-2 gap-2.5">
+      {tiles.map((tile) => (
+        <div class="flex flex-col gap-1 rounded-2xl bg-surface p-4">
+          <span class="text-[13px] text-muted">{tile.label}</span>
+          <span
+            class:list={[
+              "font-mono text-[15px] font-semibold tabular-nums",
+              tile.positive && "text-positive",
+            ]}
+          >
+            {tile.value}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <div class="mx-5.5 mt-6.5 flex flex-col gap-3">
+      <span class="text-[15px] font-semibold">{p.allocation}</span>
+      <svg
+        viewBox="0 0 346 10"
+        class="block h-2.5 w-full"
+        preserveAspectRatio="none"
+      >
+        {bars.map((b, i) => (
+          <rect
+            x={b.x}
+            width={b.width}
+            height="10"
+            rx="5"
+            class:list={["fill-accent", opacities[i]]}
+          />
+        ))}
+      </svg>
+      <div class="grid grid-cols-2 gap-x-3.5 gap-y-1.5 text-xs text-body">
+        {p.classes.map((name, i) => (
+          <span class="flex justify-between">
+            <span>{name}</span>
+            <span class="font-mono">
+              {fmt(nl, demo.allocation[i] ?? 0, PCT)}
+            </span>
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <div class="mx-5.5 mt-8 flex flex-col">
+      <div class="flex items-center justify-between pb-2">
+        <span class="text-[15px] font-semibold">{p.topHoldings}</span>
+        <span class="text-[13px] text-muted">{p.seeAll}</span>
+      </div>
+      {p.holdings.map((name, i) => {
+        const h = demo.holdings[i];
+        if (!h) return null;
+        return (
+          <div class="flex items-center gap-3 py-2.5">
+            <span class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-icon-tile text-accent">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                {h.icon === "globe" && <circle cx="12" cy="12" r="9.25" />}
+                {holdingIcons[h.icon].map((d) => (
+                  <path d={d} />
+                ))}
+              </svg>
+            </span>
+            <span class="flex min-w-0 flex-1 flex-col gap-0.5">
+              <span class="text-[15px] leading-[1.3] font-medium">{name}</span>
+              <span class="text-[13px] text-muted tabular-nums">
+                {fmt(nl, h.value / demo.netWorth, {
+                  style: "percent",
+                  maximumFractionDigits: 0,
+                })}{" "}
+                {p.weight}
+              </span>
+            </span>
+            <span class="flex flex-col items-end gap-0.5">
+              <span class="font-mono text-[15px] font-medium tabular-nums">
+                {fmt(nl, h.value, EUR)}
+              </span>
+              <span class="font-mono text-[13px] text-positive tabular-nums">
+                {fmt(nl, h.change, SIGNED_PCT)}
+              </span>
+            </span>
+          </div>
+        );
+      })}
+    </div>
+
+    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-37.5 bg-linear-to-b from-transparent to-bg to-60%"></div>
+
+    <div class="absolute right-3.5 bottom-4.5 left-3.5 flex items-center gap-2.5">
+      <div class="grid h-15.5 flex-1 grid-cols-4 rounded-full border border-nav-border bg-nav-bg p-1.25 backdrop-blur-[18px]">
+        {p.tabs.map((tab, i) => (
+          <span
+            class:list={[
+              "flex flex-col items-center justify-center gap-0.5 rounded-full text-[10px]",
+              i === 0 ? "bg-surface-2 text-text" : "text-muted",
+            ]}
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d={tabIcons[i]} />
+            </svg>
+            {tab}
+          </span>
+        ))}
+      </div>
+      <span class="flex size-15.5 shrink-0 items-center justify-center rounded-full border border-nav-border bg-nav-bg text-text backdrop-blur-[18px]">
+        <svg width="22" height="22" viewBox="0 0 24 24">
+          <path
+            d="M12 5v14M5 12h14"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+          ></path>
+        </svg>
+      </span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Quoin · Política de privacidad</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0a0a0b}
+*{box-sizing:border-box}
+.q-root{color-scheme:dark;--q-bg:#0a0a0b;--q-surface:#151518;--q-border:#26262a;--q-border-subtle:#1f1f24;--q-border-strong:#34343a;--q-text:#ffffff;--q-body:#c9c9cf;--q-muted:#8b8b93;--q-faint:#4e4e54;--q-accent:#f2f2f4;--q-on-accent:#0a0a0b;--q-nav-bg:rgba(21,21,24,0.8);--q-nav-border:rgba(255,255,255,0.08)}
+.q-root.q-light{color-scheme:light;--q-bg:#f5f5f7;--q-surface:#ffffff;--q-border:#e3e3e8;--q-border-subtle:#ececf0;--q-border-strong:#d0d0d6;--q-text:#0a0a0b;--q-body:#3c3c43;--q-muted:#6b6b74;--q-faint:#a3a3ab;--q-accent:#0a0a0b;--q-on-accent:#ffffff;--q-nav-bg:rgba(255,255,255,0.82);--q-nav-border:rgba(10,10,11,0.08)}
+.q-root a{color:var(--q-text)}
+.q-root :focus-visible{outline:2px solid var(--q-accent);outline-offset:3px;border-radius:6px}
+.q-root .q-link{text-decoration:underline;text-decoration-color:var(--q-border-strong);text-underline-offset:4px;transition:text-decoration-color .15s ease}
+.q-root .q-link:hover{text-decoration-color:var(--q-text)}
+.q-root .q-toc{text-decoration:none;color:var(--q-muted);transition:color .15s ease}
+.q-root .q-toc:hover{color:var(--q-text)}
+.q-root .q-foot{text-decoration:none;color:var(--q-muted)}
+.q-root .q-foot:hover{color:var(--q-text)}
+.q-nav{max-width:1200px;border:1px solid transparent;border-radius:999px;transition:max-width .3s cubic-bezier(.2,.7,.2,1),background-color .2s ease,border-color .2s ease}
+.q-nav.q-float{max-width:1040px;background:var(--q-nav-bg);border-color:var(--q-nav-border);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.q-sec{display:flex;flex-direction:column;gap:16px;padding-top:56px;scroll-margin-top:80px}
+.q-sec h2{margin:0;font-size:28px;line-height:1.15;font-weight:600;letter-spacing:-0.025em}
+.q-sec h3{margin:12px 0 0;font-size:17px;font-weight:600}
+.q-sec p{margin:0;font-size:16px;line-height:1.7;color:var(--q-body)}
+.q-table{width:100%;min-width:520px;border-collapse:collapse;font-size:15px;line-height:1.5}
+.q-table th{padding:0 16px 10px 0;text-align:left;font-size:13px;font-weight:500;color:var(--q-muted);border-bottom:1px solid var(--q-text)}
+.q-table td{padding:14px 16px 14px 0;vertical-align:top;color:var(--q-body);border-bottom:1px solid var(--q-border)}
+.q-table td:first-child{color:var(--q-text)}
+@media (prefers-reduced-motion:reduce){.q-root *{transition:none !important}}
+</style>
+</helmet>
+<div class="{{rootClass}}" style="width: 100%; min-height: 100vh; background: var(--q-bg); color: var(--q-text); font-family: 'Geist', ui-sans-serif, system-ui, sans-serif; -webkit-font-smoothing: antialiased">
+
+<header style="position: sticky; top: 0; z-index: 20; padding: 12px 16px 0">
+<nav class="{{navClass}}" aria-label="Principal" style="margin: 0 auto; height: 56px; padding: 0 8px 0 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<a href="Landing.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--q-text)">
+<svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true" style="display: block"><rect width="32" height="32" rx="9" style="fill: var(--q-accent)"></rect><rect x="9.25" y="9.25" width="13.5" height="13.5" rx="2.75" fill="none" stroke-width="2.5" style="stroke: var(--q-on-accent)"></rect><rect x="17" y="17" width="10" height="10" style="fill: var(--q-accent)"></rect></svg>
+<span style="font-size: 16px; font-weight: 600">Quoin</span>
+</a>
+<div style="display: flex; align-items: center; gap: 4px">
+<button type="button" onClick="{{toggleTheme}}" aria-label="{{themeLabel}}" title="{{themeLabel}}" style="display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; padding: 0; border: 0; border-radius: 999px; background: transparent; color: var(--q-muted); cursor: pointer">
+<sc-if value="{{isLight}}" hint-placeholder-val="{{ false }}"><svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg></sc-if>
+<sc-if value="{{isDark}}" hint-placeholder-val="{{ true }}"><svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"></circle><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg></sc-if>
+</button>
+<a class="q-link" href="Landing.dc.html" style="padding: 0 12px; font-size: 14px">Volver a Quoin</a>
+</div>
+</nav>
+</header>
+
+<main style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 120px">
+
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 48px; padding-bottom: 32px; border-bottom: 1px solid var(--q-text)">
+<h1 style="margin: 0; font-size: clamp(44px, 6.6vw, 88px); line-height: .98; font-weight: 600; letter-spacing: -0.045em">Privacidad</h1>
+<p style="margin: 0; font-size: 14px; color: var(--q-muted)">Actualizada el 24 de noviembre de 2026</p>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 0 96px">
+
+<nav aria-label="Secciones" style="flex: 3 1 220px; min-width: 0; padding-top: 56px">
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+<li><a class="q-toc" href="#s1">1. Quién es el responsable</a></li>
+<li><a class="q-toc" href="#s2">2. La app móvil</a></li>
+<li><a class="q-toc" href="#s3">3. La versión de ordenador</a></li>
+<li><a class="q-toc" href="#s4">4. Este sitio web</a></li>
+<li><a class="q-toc" href="#s5">5. La beta</a></li>
+<li><a class="q-toc" href="#s6">6. Bases legales</a></li>
+<li><a class="q-toc" href="#s7">7. Tus derechos</a></li>
+<li><a class="q-toc" href="#s8">8. Menores</a></li>
+<li><a class="q-toc" href="#s9">9. Cambios</a></li>
+</ol>
+</nav>
+
+<div style="flex: 7 1 560px; min-width: 0; max-width: 720px">
+
+<p style="margin: 0; padding-top: 56px; font-size: clamp(22px, 2.4vw, 28px); line-height: 1.35; font-weight: 500; letter-spacing: -0.02em">Quoin no recoge tus datos. No hay cuenta, analítica ni publicidad, y tu cartera no se envía a ningún servidor de Quoin, porque no existe. <span style="color: var(--q-muted)">Lo que sigue explica las pocas conexiones que sí hace y por qué.</span></p>
+
+<section id="s1" aria-labelledby="s1-t" class="q-sec">
+<h2 id="s1-t">1. Quién es el responsable</h2>
+<p>Aritz Martínez, desarrollador de Quoin. Para cualquier cuestión sobre privacidad, escríbeme a <a class="q-link" href="mailto:quoin@aritzmmartinez.dev">quoin@aritzmmartinez.dev</a>.</p>
+<p>Esta política cubre la app Quoin para Android, la versión de ordenador y este sitio web.</p>
+</section>
+
+<section id="s2" aria-labelledby="s2-t" class="q-sec">
+<h2 id="s2-t">2. La app móvil</h2>
+<h3>Tus datos se quedan en el móvil</h3>
+<p>Las operaciones que importas, tus posiciones y tus ajustes se guardan en una base de datos dentro de la app. Los ficheros CSV de tu broker se leen en el propio móvil y no se envían a ningún sitio.</p>
+<h3>Lo que sale del móvil</h3>
+<p>La app se conecta directamente a estos servicios, sin pasar por ningún servidor de Quoin. Como en cualquier conexión a internet, cada uno recibe tu dirección IP y la trata según su propia política.</p>
+<div style="overflow-x: auto">
+<table class="q-table">
+<thead><tr><th scope="col">Servicio</th><th scope="col">Para qué</th><th scope="col">Qué recibe, además de tu IP</th></tr></thead>
+<tbody>
+<tr><td>Banco Central Europeo</td><td>Tipos de cambio</td><td>Las divisas que necesitas</td></tr>
+<tr><td>Kraken</td><td>Precios de las criptomonedas. Puedes desactivarlo en Ajustes.</td><td>Los pares que consultas, como BTC/EUR</td></tr>
+<tr><td>Tu ordenador, en tu red</td><td>Sincronizar con Quoin, si lo vinculas</td><td>Tu cartera, cifrada, sin salir de tu red local</td></tr>
+</tbody>
+</table>
+</div>
+<p>A Kraken y al BCE nunca se les envían cantidades, importes ni operaciones.</p>
+<h3>Sincronización con tu ordenador</h3>
+<p>Si vinculas el móvil con Quoin en tu ordenador escaneando un código QR, los dos se sincronizan solo dentro de tu red local, con la conexión cifrada y el certificado del ordenador comprobado. Si tu ordenador cambia de dirección, el móvil lo busca en tu propia red; nunca fuera de ella.</p>
+<h3>Copia de seguridad de Android</h3>
+<p>Si tienes activada la copia de seguridad de Google, tu cartera se incluye en ella cifrada de extremo a extremo, y solo si el móvil tiene bloqueo de pantalla. La vinculación con tu ordenador y los precios quedan fuera de la copia.</p>
+<h3>Permisos</h3>
+<p>Internet, para los servicios de arriba; y cámara, solo para leer el QR de vinculación, que se procesa en el propio móvil. La app no pide tu ubicación, tus contactos ni acceso general a tus archivos: los CSV los eliges tú con el selector de Android.</p>
+<h3>Cómo borrar tus datos</h3>
+<p>Desinstala la app o borra sus datos desde los ajustes de Android. Como no hay copia en ningún servidor de Quoin, después no queda nada que borrar, salvo la copia de Google si la tienes activada.</p>
+<h3>Google Play</h3>
+<p>La descarga y las actualizaciones las gestiona Google según su propia política. Google Play me muestra estadísticas agregadas, como instalaciones por país y fallos de la app sin datos personales, que uso solo para mejorarla.</p>
+</section>
+
+<section id="s3" aria-labelledby="s3-t" class="q-sec">
+<h2 id="s3-t">3. La versión de ordenador</h2>
+<p>Se ejecuta en tu propio equipo y guarda los datos allí; las copias de seguridad y el acceso son cosa tuya. Para valorar tu cartera consulta el Banco Central Europeo, Kraken, Yahoo Finance (precios de acciones y ETF), el INE (IPC, para la rentabilidad real) y OpenFIGI (para identificar valores por su ISIN). Cada uno recibe los códigos de los valores o divisas que consulta, nunca cantidades ni importes.</p>
+</section>
+
+<section id="s4" aria-labelledby="s4-t" class="q-sec">
+<h2 id="s4-t">4. Este sitio web</h2>
+<p>Está alojado en GitHub Pages. GitHub registra la dirección IP de cada visita por motivos de seguridad, según su propia declaración de privacidad. Este sitio no usa cookies ni herramientas de analítica; el tema y el idioma que elijas se guardan solo en tu navegador.</p>
+<p>Los enlaces a GitHub, Docker Hub o Google Play te llevan a servicios con su propia política de privacidad.</p>
+</section>
+
+<section id="s5" aria-labelledby="s5-t" class="q-sec">
+<h2 id="s5-t">5. La beta</h2>
+<p>Para probar la app antes del lanzamiento, te unes al grupo de testers de Quoin en Google Groups. Google trata tu correo según su política; yo lo veo como administrador del grupo, solo para darte acceso a la prueba en Google Play y responder a tus comentarios.</p>
+<p>Puedes salir del grupo cuando quieras. Cuando la app se publique, eliminaré el grupo.</p>
+</section>
+
+<section id="s6" aria-labelledby="s6-t" class="q-sec">
+<h2 id="s6-t">6. Bases legales</h2>
+<div style="overflow-x: auto">
+<table class="q-table">
+<thead><tr><th scope="col">Tratamiento</th><th scope="col">Base legal (RGPD)</th></tr></thead>
+<tbody>
+<tr><td>Registros técnicos del sitio web</td><td>Interés legítimo en la seguridad del servicio, art. 6.1.f</td></tr>
+<tr><td>Grupo de la beta</td><td>Tu consentimiento al unirte, art. 6.1.a</td></tr>
+<tr><td>Correos que me escribes</td><td>Interés legítimo en responderte, art. 6.1.f</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="s7" aria-labelledby="s7-t" class="q-sec">
+<h2 id="s7-t">7. Tus derechos</h2>
+<p>Puedes pedir acceso, rectificación, supresión, oposición, limitación o portabilidad de tus datos escribiendo a <a class="q-link" href="mailto:quoin@aritzmmartinez.dev">quoin@aritzmmartinez.dev</a>. Si crees que no se han respetado, puedes reclamar ante la Agencia Española de Protección de Datos, en <a class="q-link" href="https://www.aepd.es">aepd.es</a>.</p>
+</section>
+
+<section id="s8" aria-labelledby="s8-t" class="q-sec">
+<h2 id="s8-t">8. Menores</h2>
+<p>Quoin no está dirigida a menores de 18 años.</p>
+</section>
+
+<section id="s9" aria-labelledby="s9-t" class="q-sec">
+<h2 id="s9-t">9. Cambios</h2>
+<p>Publicaré aquí cualquier cambio con su fecha. Si afecta a lo que sale de tu móvil o de tu ordenador, lo diré también en las notas de la versión.</p>
+</section>
+
+</div>
+</div>
+</main>
+
+<footer style="border-top: 1px solid var(--q-border)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 32px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 28px; font-size: 14px">
+<span style="color: var(--q-muted)">Quoin · Código abierto bajo AGPL‑3.0</span>
+<nav aria-label="Enlaces" style="display: flex; flex-wrap: wrap; gap: 10px 28px">
+<a class="q-foot" href="Landing.dc.html">Inicio</a>
+<a class="q-foot" href="https://github.com/aritzmmartinez/quoin">GitHub</a>
+<a class="q-foot" href="mailto:quoin@aritzmmartinez.dev">Contacto</a>
+</nav>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":3600}}'>
+class Component extends DCLogic {
+  componentDidMount() {
+    var self = this;
+    this.onScroll = function (e) {
+      var t = e && e.target;
+      var y = window.scrollY || (t && t !== document && typeof t.scrollTop === 'number' ? t.scrollTop : 0) || 0;
+      var floating = y > 24;
+      if (!self.state || self.state.floating !== floating) self.setState({ floating: floating });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true, capture: true });
+    this.onScroll();
+  }
+  componentWillUnmount() {
+    if (this.onScroll) window.removeEventListener('scroll', this.onScroll, { capture: true });
+  }
+  renderVals() {
+    var self = this;
+    var st = this.state || {};
+    var light = st.theme === 'light';
+    return {
+      rootClass: light ? 'q-root q-light' : 'q-root',
+      navClass: st.floating ? 'q-nav q-float' : 'q-nav',
+      isLight: light,
+      isDark: !light,
+      themeLabel: light ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro',
+      toggleTheme: function () { self.setState({ theme: light ? 'dark' : 'light' }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
